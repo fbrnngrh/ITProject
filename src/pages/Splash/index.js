@@ -2,18 +2,28 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {ILLogo} from '../../assets';
 import {colors, fonts} from '../../utils';
+import {Fire} from '../../config';
 // import { useEffect } from 'react/cjs/react.production.min';
 
 export default function Splash({navigation}) {
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace('GetStarted');
+      Fire.auth().onAuthStateChanged(user => {
+        if (user) {
+          // user sedang login
+          console.log('user: ', user);
+          navigation.replace('MainApp');
+        } else {
+          //user sudah logout
+          navigation.replace('GetStarted');
+        }
+      });
     }, 3000);
   }, [navigation]);
   return (
     <View style={styles.page}>
       <ILLogo />
-      <Text style={styles.title}>E-klinik Politala</Text>
+      <Text style={styles.title}>E-Klinik Politala</Text>
     </View>
   );
 }

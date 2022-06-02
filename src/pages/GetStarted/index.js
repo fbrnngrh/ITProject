@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, ImageBackground} from 'react-native';
 import React from 'react';
 import {ILGetStarted, ILLogo2} from '../../assets';
 import {Button, Gap} from '../../components';
-import { colors, fonts } from '../../utils';
+import {colors, fonts} from '../../utils';
 
 export default function GetStarted({navigation}) {
   return (
